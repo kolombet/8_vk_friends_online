@@ -15,7 +15,7 @@ To get **app_id**, create new app in [developers portal](https://vk.com/dev)
 Example of script launch on *Linux*, *Python 3.5*:
 
 ```
-vk_friends_online.py -l mymail@gmail.com
+vk_friends_online.py -l mymail@gmail.com -a 12345
 enter password:
 friends online:
 Guido Van Rossum
