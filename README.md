@@ -1,6 +1,28 @@
 # Watcher of Friends Online
 
-[TODO. There will be project description]
+This script show your online friends list for [vk.com](https://vk.com).
+
+# Quickstart
+
+You need to specify vk user login with parameter __-l__ or __--login__. You can register account at [vk](https://vk.com)
+When you run this script, you will be promted to enter your vk password securely. 
+
+You must turn off two factor in vk, to allow script authentification by login/password
+
+You need to specify app_id with parameter __-a__ or __--appid__
+To get app_id, create new app in [developers portal](https://vk.com/dev) 
+
+Example of script launch on Linux, Python 3.5:
+
+```
+vk_friends_online.py -l mymail@gmail.com
+enter password:
+friends online:
+Guido Van Rossum
+Linus Torvalds
+Richard Stallman
+
+```
 
 # How to Install
 
