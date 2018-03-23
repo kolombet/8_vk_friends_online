@@ -5,29 +5,31 @@ from getpass import getpass
 
 
 def get_api(app_id, user_login, user_password, api_version):
+    friends_access = "friends"
     session = vk.AuthSession(
         app_id=app_id,
         user_login=user_login,
         user_password=user_password,
+        scope=friends_access
     )
-    api_version = "5.73"
     return vk.API(session, v=api_version)
 
 
-def get_frineds(api):
-    return api.friends.get(fields="domain")["items"]
+def get_online_friends_ids(api):
+    return api.friends.getOnline()
 
 
 def get_online_friends(api):
-    friends = get_frineds(api)
-    friends_online = [friend for friend in friends if friend["online"] == 1]
-    return friends_online
+    return api.users.get(user_ids=get_online_friends_ids(api))
 
 
 def output_friends_to_console(friends_online):
+    if not len(friends_online):
+        print("no friends online")
+        return
     for friend in friends_online:
+        print("friends online:")
         print("{} {}".format(friend["first_name"], friend["last_name"]))
-    pass
 
 
 def get_args():
@@ -68,5 +70,4 @@ if __name__ == "__main__":
         sys.exit("please enter password")
     api = get_api(args.app_id, args.login, password, version)
     friends_online = get_online_friends(api)
-    print("friends online:")
     output_friends_to_console(friends_online)
