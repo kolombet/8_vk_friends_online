@@ -64,7 +64,6 @@ if __name__ == "__main__":
     api = get_api(args.app_id, args.login, password, args.version)
     friends_online = get_online_friends(api)
     if not len(friends_online):
-        print("no friends online")
-    else:
-        print("friends online:")
-        output_friends_to_console(friends_online)
+        sys.exit("no friends online")
+    print("friends online:")
+    output_friends_to_console(friends_online)
